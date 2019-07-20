@@ -13,4 +13,6 @@ ln -s ${where}/hcana/hcana hcana
 ln -s /cache/hallc/spring17/raw cache 
 ln -s /net/cdaq/cdaql1data/cdaq/vcs2019/rootfiles ROOTfiles 
 ln -s /net/cdaq/cdaql1data/cdaq/vcs2019/REPORT_OUTPUT REPORT_OUTPUT  
+ln -s /net/cdaq/cdaql1data/coda/data/raw raw 
+ln -s /net/cdaq/cdaql1data/coda/data/raw.copiedtotape raw.copiedtotape
 
