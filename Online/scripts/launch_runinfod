@@ -11,6 +11,6 @@ runinfod \
   -rc Online/database/rundb_coin.json \
   -rh Online/database/rundb_hms.json \
   -rs Online/database/rundb_shms.json \
-  -mh .000511 \
-  -ms .938272
+  -mh .938272 \
+  -ms .000511
 

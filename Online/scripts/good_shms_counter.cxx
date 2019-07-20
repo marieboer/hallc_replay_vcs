@@ -36,8 +36,8 @@ std::string goodTrack = "P.gtr.dp > -10 && P.gtr.dp < 22 &&"
                         "-0.05 < P.gtr.th && P.gtr.th < 0.05 && "
                         "-0.035 < P.gtr.ph && P.gtr.ph < 0.025"
                         "&& P.gtr.y > -2.0 && P.gtr.y < 3.0";
-std::string hadronCut = "P.cal.etottracknorm < 0.80 &&"
-                        "P.hgcer.npeSum < 0.1";
+//std::string hadronCut = "P.cal.etottracknorm < 0.80 &&"
+std::string hadronCut = "P.cal.etottracknorm > 0.80 ";
 
 // =================================================================================
 // Utility function to return the first good root file for this run

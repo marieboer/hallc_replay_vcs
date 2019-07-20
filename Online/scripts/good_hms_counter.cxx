@@ -36,8 +36,8 @@ std::string goodTrack = "H.gtr.dp > -8 && H.gtr.dp < 8 &&"
                         "-0.08 < H.gtr.th && H.gtr.th < 0.06 && "
                         "-0.03 < H.gtr.ph && H.gtr.ph < 0.04"
                         "&& TMath::Abs(H.gtr.y) < 2.0";
-std::string electronCut = "H.cal.etottracknorm > 0.80 && H.cal.etottracknorm < 2.&&"
-                          "H.cer.npeSum > 1.";
+//std::string electronCut = "H.cal.etottracknorm > 0.80 && H.cal.etottracknorm < 2.&&"
+std::string electronCut = "H.hod.betanotrack>0.55 && H.hod.betanotrack<0.8";
 
 // =================================================================================
 // Utility function to return the first good root file for this run

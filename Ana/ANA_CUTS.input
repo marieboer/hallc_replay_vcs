@@ -49,47 +49,44 @@
 20
 
 * time delay (cut at ROC2) ! the most important cut to be set for analysis !!!
- 38.35
+40
 
 * Trigger time lower cut (+/- delay, negative)
--10000
+-100000
 * Trigger time upper cut (+/- delay, positive)
-10000
+100000
 
 *********************************************************
 * PID cuts (used as condition for PID, not strict cuts) *
 *********************************************************
 
 * HMS calorimeter min energy for electron (if no cut set negative)
-0.4
+-1
 
 * SHMS calorimeter min energy for electron (if no cut set negative)
--1
-*0.4
+0.7
 
 * HMS Cherenkov photoelectron min/max (if no cut set negative)
-1.5
+-1
 
 * SHMS aerogel photoelectron min/max (if no cut set negative)
-1.5
+-1
 
 * SHMS heavy gas Ch photoelectron min/max (if no cut set negative)
-1.5
+-1
 
 * beta min HMS (if no cut set negative)
 -1
-*0.45
+
 
 * beta max HMS (if no cut set negative / can be above 1 for resolution)
--1
-*0.85
+1.0
 
 * beta min SHMS (if no cut set negative)
-*.8
--1
+0.7
+
 
 * beta max SHMS (if no cut set negative / can be above 1 for resolution)
-*1.2
 -1
 
 

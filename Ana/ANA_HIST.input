@@ -8,28 +8,28 @@
 * "missing" distributions
 
 * M2miss: min, max, N bins
--0.5
-1.5
+-0.2
+0.2
 100
 * Mmiss: min, max, N bins
 -0.5
-1.5
+0.5
 100
 * missing momentum: min, max, N bins
 0
-2
+0.5
 100
 * Emiss: min, max, N bins
--0.5
-1.5 
+-0.3
+0.3 
 100
 * PTmiss: min, max, N bins
 0
-1
+0.3
 100
 * PT2miss: min, max, N bins
 0
-1
+0.15
 100
 
 *-----------------------------------------
@@ -53,18 +53,18 @@
 
 * hms_mom: min, max, N bins
 0
-4.5
+1.5
 100
 * shms_mom: min, max, N bins
-0
+3
 4.5
 100
 * Q2: min, max, N bins
 0
-1.5
+1.2
 100
 * epsilon: min, max, N bins
-0
+0.5
 1
 100
 * xbj: min, max, N bins
@@ -81,11 +81,11 @@
 100
 * -t: min, max, N bins
 0
-3
+1.5
 100
 * W: min, max, N bins
 0.5
-2.5
+1.5
 100
 * nu: min, max, N bins
 0
@@ -96,8 +96,8 @@
 360
 100
 * hms_beta: min, max, N bins
-0.7
-1.3
+0.5
+1.1
 100
 * shms_beta: min, max, N bins
 0.7
@@ -130,27 +130,27 @@
 * acceptance
 
 * hms_delta
--30
-30
-120
+-25
+25
+100
 * shms_delta
--30
-50
-120
+-25
+40
+100
 * hms_th
--12
-12
-120
+-0.05
+0.05
+100
 * shms_th
--12
-12
-120
+-0.05
+0.05
+100
 * hms_phi
--12
-12
-120
+-0.1
+0.1
+100
 * shms_phi
--12
-12
-120
+-0.1
+0.1
+100
 
