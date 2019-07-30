@@ -7,5 +7,26 @@
   }, 
   "8694": {
     "comment": "junk"
+  }, 
+  "8817": {
+    "comment": "first elastic run"
+  }, 
+  "8827": {
+    "comment": "dummy elastic I run"
+  }, 
+  "8847": {
+    "comment": "junk"
+  }, 
+  "8848": {
+    "comment": "full replay is not working on this run"
+  }, 
+  "8850": {
+    "comment": "junk"
+  }, 
+  "8866": {
+    "comment": "junk test prescale"
+  }, 
+  "8897": {
+    "comment": "DC tripped run ended early"
   }
 }

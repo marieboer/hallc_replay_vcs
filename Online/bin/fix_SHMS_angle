@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ONLINE_DIR=$(dirname $(readlink -f $0))/..
+source $ONLINE_DIR/scripts/setup_env.sh
+module load epics
+
+SPECTROMETER="SHMS"
+
+cd $REPLAY_DIR
+echo "Attempting to fix the ${SPECTROMETER} soft angle offset."
+echo "Note: this will only work if the background processes are running."
+echo "Input angle: $1"
+echo ""
+
+python Online/scripts/fix_angle_offset.py -s ${SPECTROMETER} -a $1

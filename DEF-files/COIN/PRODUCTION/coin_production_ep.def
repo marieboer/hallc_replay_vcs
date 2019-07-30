@@ -1,6 +1,8 @@
 block T.coin.hTRIG*
 block T.coin.pTRIG*
 
+block P.tr.*
+block H.tr.*
 
 block H.cer.npe*
 block H.cal.e*

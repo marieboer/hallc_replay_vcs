@@ -8,11 +8,7 @@ using nlohmann::json;
 
 using namespace std;
 
-const float CTtimeCut = 1.0; //This is the total size of the coincidence time window on on both positive and negative side. i.e. 1.5 would mean cut from -1.5 to 1.5;
-const float CTbackLow = 7.0; //This is the lower limit of the background CT time window.  Note that this value applies to both positive and negative CTtime on either side of peak.
-const float CTbackHi  = 13.0; //The upper limit of background CT time window.  Same as for above, this applies to both positive and negative.
 
-const float CTSigBackRat = 2.0*CTtimeCut/(2.0*(CTbackHi - CTbackLow));  //The ratio to apply when subtracting coincidental background.
 
 void ReadHallCData::Loop (vector <string> vector_name, int runID, string  process, string what, string target){
 
@@ -480,7 +476,7 @@ cout<< hms_beta_min<<" "<< hms_beta_max<<" "<<hms_beta_bins<<" "<<shms_beta_min<
 			h_CosThCM[1]->Fill(CosThCM_data);
 		}
 
-		if (fabs(CTime_epCoinTime_ROC2-time_shift)< CTtimeCut){
+		if (fabs(CTime_epCoinTime_ROC2-time_shift)<1.0){
 
 			h_Pmom[2]->Fill(LV_proton_out_data.P());
 			h_elmom[2]->Fill(LV_el_out_data.P());
@@ -553,40 +549,40 @@ cout<< hms_beta_min<<" "<< hms_beta_max<<" "<<hms_beta_bins<<" "<<shms_beta_min<
 				h2_mtTh[4]->Fill(mt_data, ThCM_data);
 			}
 
-		} else if (fabs(CTime_epCoinTime_ROC2-time_shift)>CTbackLow && fabs(CTime_epCoinTime_ROC2-time_shift)<CTbackHi){
+		} else if (fabs(CTime_epCoinTime_ROC2-time_shift)>7 && fabs(CTime_epCoinTime_ROC2-time_shift)<13){
 		
-			h_Mmiss[3]->Fill(Mmiss_data, CTSigBackRat);
-			h_M2miss[3]->Fill(M2miss_data, CTSigBackRat);
-			h_Emiss[3]->Fill(Emiss_data, CTSigBackRat);
-			h_PTmiss[3]->Fill(PTmiss_data, CTSigBackRat);
-			h_PT2miss[3]->Fill(PT2miss_data, CTSigBackRat);
-			h_gmom[3]->Fill(LV_gamma_out_data.P(), CTSigBackRat);
+			h_Mmiss[3]->Fill(Mmiss_data, 1./6.);
+			h_M2miss[3]->Fill(M2miss_data, 1./6.);
+			h_Emiss[3]->Fill(Emiss_data, 1./6.);
+			h_PTmiss[3]->Fill(PTmiss_data, 1./6.);
+			h_PT2miss[3]->Fill(PT2miss_data, 1./6.);
+			h_gmom[3]->Fill(LV_gamma_out_data.P(), 1./6.);
 			
-			h_Q2[3]->Fill(Q2_data, CTSigBackRat);
-			h_epsilon[3]->Fill(epsilon_data, CTSigBackRat);
-			h_Xbj[3]->Fill(Xbj_data, CTSigBackRat);
-			h_W[3]->Fill(W_data, CTSigBackRat);
-			h_nu[3]->Fill(nu_data, CTSigBackRat);
-			h_mt[3]->Fill(mt_data, CTSigBackRat);
-			h_Pmom[3]->Fill(LV_proton_out_data.P(), CTSigBackRat);
-			h_elmom[3]->Fill(LV_el_out_data.P(), CTSigBackRat);
+			h_Q2[3]->Fill(Q2_data, 1./6.);
+			h_epsilon[3]->Fill(epsilon_data, 1./6.);
+			h_Xbj[3]->Fill(Xbj_data, 1./6.);
+			h_W[3]->Fill(W_data, 1./6.);
+			h_nu[3]->Fill(nu_data, 1./6.);
+			h_mt[3]->Fill(mt_data, 1./6.);
+			h_Pmom[3]->Fill(LV_proton_out_data.P(), 1./6.);
+			h_elmom[3]->Fill(LV_el_out_data.P(), 1./6.);
 
-			h2_Q2W[3]->Fill(Q2_data, W_data, CTSigBackRat);
-			h2_XQ2[3]->Fill(Xbj_data, Q2_data, CTSigBackRat);
-			h2_Q2mt[3]->Fill(Q2_data, mt_data, CTSigBackRat);
-			h2_nuep[3]->Fill(nu_data,epsilon_data, CTSigBackRat);
-			h2_Pemom[3]->Fill(LV_proton_out_data.E(), LV_proton_out_data.P(), CTSigBackRat);
-			h2_elemom[3]->Fill(LV_el_out_data.E(), LV_el_out_data.P(), CTSigBackRat);
-			h2_gemom[3]->Fill(LV_gamma_out_data.E(), LV_gamma_out_data.P(), CTSigBackRat);
+			h2_Q2W[3]->Fill(Q2_data, W_data, 1./6.);
+			h2_XQ2[3]->Fill(Xbj_data, Q2_data, 1./6.);
+			h2_Q2mt[3]->Fill(Q2_data, mt_data, 1./6.);
+			h2_nuep[3]->Fill(nu_data,epsilon_data, 1./6.);
+			h2_Pemom[3]->Fill(LV_proton_out_data.E(), LV_proton_out_data.P(), 1./6.);
+			h2_elemom[3]->Fill(LV_el_out_data.E(), LV_el_out_data.P(), 1./6.);
+			h2_gemom[3]->Fill(LV_gamma_out_data.E(), LV_gamma_out_data.P(), 1./6.);
 			
 			if (process.compare("vcs")==0 || process.compare("pi0")==0){
-				h_Phi[3]->Fill(Phi_data, CTSigBackRat);
-				h_ThCM[3]->Fill(ThCM_data, CTSigBackRat);
-				h_CosThCM[3]->Fill(CosThCM_data, CTSigBackRat);
-				h2_Q2Th[3]->Fill(Q2_data, ThCM_data, CTSigBackRat);
-				h2_WTh[3]->Fill(W_data, ThCM_data, CTSigBackRat);
-				h2_ThCMPhi[3]->Fill(Phi_data, ThCM_data, CTSigBackRat);
-				h2_mtTh[3]->Fill(mt_data, ThCM_data, CTSigBackRat);
+				h_Phi[3]->Fill(Phi_data, 1./6.);
+				h_ThCM[3]->Fill(ThCM_data, 1./6.);
+				h_CosThCM[3]->Fill(CosThCM_data, 1./6.);
+				h2_Q2Th[3]->Fill(Q2_data, ThCM_data, 1./6.);
+				h2_WTh[3]->Fill(W_data, ThCM_data, 1./6.);
+				h2_ThCMPhi[3]->Fill(Phi_data, ThCM_data, 1./6.);
+				h2_mtTh[3]->Fill(mt_data, ThCM_data, 1./6.);
 			}
 		}
 
@@ -742,37 +738,6 @@ int ReadHallCData::DrawHist(string process, int run){
 	c1->cd(1);
 	h_CTime_epCoinTime_ROC2[0]->Draw(); gPad->SetLogy(1); 
 	h_CTime_epCoinTime_ROC2[0]->SetMinimum(1);
-
-	TLine *lCTlolo = new TLine(-CTbackHi,1.0,-CTbackHi,h_CTime_epCoinTime_ROC2[0]->GetMaximum()*1.05);
-        lCTlolo->SetLineColor(kMagenta -1);
-        lCTlolo->SetLineStyle(2);
-        lCTlolo->Draw("same");
-
-	TLine *lCTlohi = new TLine(-CTbackLow,1.0,-CTbackLow,h_CTime_epCoinTime_ROC2[0]->GetMaximum()*1.05);
-       	lCTlohi->SetLineColor(kMagenta -1);
-       	lCTlohi->SetLineStyle(2);
-       	lCTlohi->Draw("same");
-
-	TLine *lCThilo = new TLine(CTbackLow,1.0,CTbackLow,h_CTime_epCoinTime_ROC2[0]->GetMaximum()*1.05);
-       	lCThilo->SetLineColor(kMagenta -1);
-       	lCThilo->SetLineStyle(2);
-       	lCThilo->Draw("same");
-
-	TLine *lCThihi = new TLine(CTbackHi,1.0,CTbackHi,h_CTime_epCoinTime_ROC2[0]->GetMaximum()*1.05);
-       	lCThihi->SetLineColor(kMagenta -1);
-       	lCThihi->SetLineStyle(2);
-       	lCThihi->Draw("same");
-
-	TLine *lCTGoodLo = new TLine(-CTtimeCut,1.0,-CTtimeCut,h_CTime_epCoinTime_ROC2[0]->GetMaximum()*1.05);
-       	lCTGoodLo->SetLineColor(kMagenta +1);
-       	lCTGoodLo->SetLineStyle(2);
-       	lCTGoodLo->Draw("same");
-
-	TLine *lCTGoodHi = new TLine(CTtimeCut,1.0,CTtimeCut,h_CTime_epCoinTime_ROC2[0]->GetMaximum()*1.05);
-        lCTGoodHi->SetLineColor(kMagenta +1);
-        lCTGoodHi->SetLineStyle(2);
-        lCTGoodHi->Draw("same");
-
 	h_CTime_epCoinTime_ROC2[1]->SetLineColor(8); h_CTime_epCoinTime_ROC2[1]->Draw("same");
 	h_CTime_epCoinTime_ROC2[2]->SetLineColor(2); h_CTime_epCoinTime_ROC2[2]->Draw("same");
 	c1->SaveAs(Form(VCS_REPLAY_PATH "/Ana/Results/cointime_%d.pdf(",run)); 
@@ -1165,28 +1130,28 @@ int ReadHallCData::DrawHist(string process, int run){
 	c1->SaveAs(Form(VCS_REPLAY_PATH "/Ana/Results/exclusivity_%d.pdf(",run));
 	c1->Clear();c1->Divide(2,2);
 	c1->cd(1); 
-	h_M2miss[2]->SetLineColor(9); h_M2miss[2]->Draw("HIST"); gPad->SetLogy(0); h_M2miss[2]->SetMinimum(0);
+	h_M2miss[2]->SetLineColor(6); h_M2miss[2]->Draw("HIST"); gPad->SetLogy(0); h_M2miss[2]->SetMinimum(0);
 	h_M2miss[4]->Draw("HISTsame"); h_M2miss[3]->SetLineColor(8); h_M2miss[3]->Draw("HISTsame");
 	c1->cd(2); 
-	h_Mmiss[2]->SetLineColor(9); h_Mmiss[2]->Draw("HIST"); gPad->SetLogy(0); h_Mmiss[2]->SetMinimum(0);
+	h_Mmiss[2]->SetLineColor(6); h_Mmiss[2]->Draw("HIST"); gPad->SetLogy(0); h_Mmiss[2]->SetMinimum(0);
 	h_Mmiss[4]->Draw("HISTsame"); h_Mmiss[3]->SetLineColor(8); h_Mmiss[3]->Draw("HISTsame"); 
 	c1->cd(3); 
-	h_Emiss[2]->SetLineColor(9); h_Emiss[2]->Draw("HIST"); gPad->SetLogy(0); h_Emiss[2]->SetMinimum(0);
+	h_Emiss[2]->SetLineColor(6); h_Emiss[2]->Draw("HIST"); gPad->SetLogy(0); h_Emiss[2]->SetMinimum(0);
 	h_Emiss[4]->Draw("HISTsame"); h_Emiss[3]->SetLineColor(8); h_Emiss[3]->Draw("HISTsame"); 
 	c1->cd(4); 
-	h_PTmiss[2]->SetLineColor(9); h_PTmiss[2]->Draw("HIST"); gPad->SetLogy(0); h_PTmiss[2]->SetMinimum(0);
+	h_PTmiss[2]->SetLineColor(6); h_PTmiss[2]->Draw("HIST"); gPad->SetLogy(0); h_PTmiss[2]->SetMinimum(0);
 	h_PTmiss[4]->Draw("HISTsame"); h_PTmiss[3]->SetLineColor(8); h_PTmiss[3]->Draw("HISTsame"); 
 	c1->SaveAs(Form(VCS_REPLAY_PATH "/Ana/Results/exclusivity_%d.pdf",run));	
 	c1->SaveAs(Form(VCS_REPLAY_PATH "/Ana/Results/exclusivity_%d.root",run));
 	c1->Clear(); c1->Divide(2,2);
 	c1->cd(1); 
-	h_M2miss[2]->SetLineColor(9); h_M2miss[2]->Draw("HIST"); gPad->SetLogy(0); h_M2miss[2]->SetMinimum(0);
+	h_M2miss[2]->SetLineColor(6); h_M2miss[2]->Draw("HIST"); gPad->SetLogy(0); h_M2miss[2]->SetMinimum(0);
 	h_M2miss[4]->Draw("HISTsame"); h_M2miss[3]->SetLineColor(8); h_M2miss[3]->Draw("HISTsame");
 	c1->cd(2); 
-	h_gmom[2]->SetLineColor(9); h_gmom[2]->Draw("HIST"); gPad->SetLogy(0); h_gmom[2]->SetMinimum(0);
-	h_gmom[4]->SetLineColor(2); h_gmom[4]->Draw("HISTsame"); h_gmom[3]->SetLineColor(8); h_gmom[3]->Draw("HISTsame"); 
+	h_gmom[2]->SetLineColor(6); h_gmom[2]->Draw("HIST"); gPad->SetLogy(0); h_gmom[2]->SetMinimum(0);
+	h_gmom[4]->Draw("HISTsame"); h_gmom[3]->SetLineColor(8); h_gmom[3]->Draw("HISTsame"); 
 	c1->cd(3); 
-	h_Emiss[2]->SetLineColor(9); h_Emiss[2]->Draw("HIST"); gPad->SetLogy(0); h_Emiss[2]->SetMinimum(0);
+	h_Emiss[2]->SetLineColor(6); h_Emiss[2]->Draw("HIST"); gPad->SetLogy(0); h_Emiss[2]->SetMinimum(0);
 	h_Emiss[4]->Draw("HISTsame"); h_Emiss[3]->SetLineColor(8); h_Emiss[3]->Draw("HISTsame"); 
   c1->SaveAs(Form(VCS_REPLAY_PATH "/Ana/Results/ana_monitor_%d.pdf",run)); 
 	c1->Clear(); c1->Divide(2,2);

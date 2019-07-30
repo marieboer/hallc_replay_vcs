@@ -10,6 +10,8 @@ block g.evtyp*
 #block H.tr.PruneSelect
 #block P.tr.*
 #block H.tr.*
+block P.tr.n*
+block H.tr.n*
 
 block H.extcor.xsieve
 block H.extcor.ysieve

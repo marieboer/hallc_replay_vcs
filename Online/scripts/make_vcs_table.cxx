@@ -9,7 +9,6 @@
 constexpr const int FIRST_VCS_RUN = 8819;
 
 void make_vcs_table() {
-
   using nlohmann::json;
   json vcsdb;
   {
@@ -48,8 +47,8 @@ void make_vcs_table() {
     fmt::print(" {:<7} ", "th_shms");
     fmt::print(" {:^8} ", "start");
     fmt::print(" {:^17} ", "end time");
-    fmt::print(" {:^14} ", "HMS e yield");
-    fmt::print(" {:^14} ", "SHMS h yield");
+    fmt::print(" {:^14} ", "HMS p yield");
+    fmt::print(" {:^14} ", "SHMS e yield");
     fmt::print(" {:>7} ", "peak1");
     fmt::print(" {:>7} ", "peak2");
     fmt::print(" {:>7} ", "peak3");
@@ -58,11 +57,11 @@ void make_vcs_table() {
     std::cout << "\n";
   };
 
-  std::string old_target          = "";
-  double p_hms   = 0.0;
-  double th_hms  = 0.0;
-  double p_shms  = 0.0;
-  double th_shms = 0.0;
+  std::string old_target = "";
+  double      p_hms      = 0.0;
+  double      th_hms     = 0.0;
+  double      p_shms     = 0.0;
+  double      th_shms    = 0.0;
 
   for (json::iterator it = rundb.begin(); it != rundb.end(); ++it) {
     auto runjs = it.value();
@@ -72,8 +71,8 @@ void make_vcs_table() {
     }
 
     std::string target_lab = runjs["target"]["target_label"].get<std::string>();
-    if (target_lab != old_target
-     || ((p_hms != runjs["spectrometers"]["hms_momentum"].get<double>()) ||
+    if (target_lab != old_target ||
+        ((p_hms != runjs["spectrometers"]["hms_momentum"].get<double>()) ||
          (th_hms != runjs["spectrometers"]["hms_angle"].get<double>()) ||
          (p_shms != runjs["spectrometers"]["shms_momentum"].get<double>()) ||
          (th_shms != runjs["spectrometers"]["shms_angle"].get<double>()))) {
@@ -85,7 +84,7 @@ void make_vcs_table() {
     p_shms  = runjs["spectrometers"]["shms_momentum"].get<double>();
     th_shms = runjs["spectrometers"]["shms_angle"].get<double>();
 
-    old_target          = target_lab;
+    old_target = target_lab;
 
     good_runfile << std::stoi(it.key()) << "\n";
 
@@ -113,7 +112,7 @@ void make_vcs_table() {
       auto   rl_hms    = countdb_hms[it.key()];
       double n_hms     = rl_hms["count_e"].get<double>();
       double ps_factor = rl_hms["ps_factor"].get<double>();
-      charge    = rl_hms["good_total_charge"].get<double>();
+      charge           = rl_hms["good_total_charge"].get<double>();
       double hms_yield = n_hms * ps_factor / charge;
       double hms_unc   = sqrt(n_hms) * ps_factor / charge;
       fmt::print(" {:>5.1f}", hms_yield);
@@ -126,7 +125,7 @@ void make_vcs_table() {
       auto   rl_shms    = countdb_shms[it.key()];
       double n_shms     = rl_shms["count_h"].get<double>();
       double ps_factor  = rl_shms["ps_factor"].get<double>();
-      charge     = rl_shms["good_total_charge"].get<double>();
+      charge            = rl_shms["good_total_charge"].get<double>();
       double shms_yield = n_shms * ps_factor / charge;
       double shms_unc   = sqrt(n_shms) * ps_factor / charge;
       fmt::print(" {:>5.0f}", shms_yield);
@@ -137,14 +136,13 @@ void make_vcs_table() {
     }
     if (vcsdb.count(it.key()) != 0) {
       try {
-
         double n_peak1 = vcsdb[it.key()]["missing_mass"]["peak1"]["integral"].get<double>();
         double n_peak2 = vcsdb[it.key()]["missing_mass"]["peak2"]["integral"].get<double>();
         double n_peak3 = vcsdb[it.key()]["missing_mass"]["peak3"]["integral"].get<double>();
         if (charge > 0) {
-          fmt::print(" {:>7.1f} ", n_peak1  / charge);
-          fmt::print(" {:>7.1f} ", n_peak2  / charge);
-          fmt::print(" {:>7.1f} ", n_peak3  / charge);
+          fmt::print(" {:>7.1f} ", n_peak1 / charge);
+          fmt::print(" {:>7.1f} ", n_peak2 / charge);
+          fmt::print(" {:>7.1f} ", n_peak3 / charge);
           fmt::print(" {:>7.1f} ", charge);
         } else {
           fmt::print(" {:>9} ", "");
@@ -153,7 +151,7 @@ void make_vcs_table() {
           fmt::print(" {:>9} ", "");
         }
       } catch (std::domain_error) {
-        ; // do nothing
+        ;  // do nothing
       } catch (nlohmann::detail::type_error) {
         // should never happen...
         std::cout << "WEIRD TYPE ERROR" << std::endl;
@@ -170,7 +168,7 @@ void make_vcs_table() {
         try {
           comment = commentdb[it.key()]["comment"].get<std::string>();
         } catch (std::domain_error) {
-          ; // do nothing
+          ;  // do nothing
         }
       }
     }

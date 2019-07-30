@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ONLINE_DIR=$(dirname $(readlink -f $0))/..
+source $ONLINE_DIR/scripts/setup_env.sh
+cd $REPLAY_DIR
+
+runinfod \
+  -kc DBASE/COIN/standard.kinematics \
+  -kh DBASE/HMS/standard.kinematics \
+  -ks DBASE/SHMS/standard.kinematics \
+  -rc Online/database/rundb_coin.json \
+  -rh Online/database/rundb_hms.json \
+  -rs Online/database/rundb_shms.json \
+  -mh .000511 \
+  -ms .938272
+
