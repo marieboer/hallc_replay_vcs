@@ -1,6 +1,6 @@
 #!/bin/csh
 
-set org="/home/cdaq/vcs2019/hallc_replay_vcs"
+set org="/home/cdaq/mboer/hallc_replay_vcs"
 
 echo "arguments: 1) run number 2) events" 
 set dir="${org}/REPORT_OUTPUT/COIN/PRODUCTION/"

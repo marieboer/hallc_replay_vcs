@@ -49,7 +49,7 @@
 20
 
 * time delay (cut at ROC2) ! the most important cut to be set for analysis !!!
-40
+39
 
 * Trigger time lower cut (+/- delay, negative)
 -100000
