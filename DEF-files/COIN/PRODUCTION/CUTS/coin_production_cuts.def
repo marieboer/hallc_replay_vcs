@@ -26,4 +26,7 @@ Reconstruct_master ALL_events_NO_EDTM
 Block: Physics
 #include "DEF-files/HMS/PRODUCTION/CUTS/hstackana_physics_cuts.def"
 #include "DEF-files/SHMS/PRODUCTION/CUTS/pstackana_physics_cuts.def"
-Physics_master ALL_events_NO_EDTM
+coin_track  P.gtr.index>-1&&H.gtr.index>-1&&H.gtr.dp>=-8.&&H.gtr.dp<=8.
+coin_time   CTime.epCoinTime_ROC2<60&&CTime.epCoinTime_ROC2>20
+good_coin   coin_track&&coin_time	   
+Physics_master good_coin

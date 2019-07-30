@@ -30,6 +30,7 @@
 #include <TCanvas.h>
 #include <TGraphErrors.h>
 #include <TBuffer.h>
+#include <TLine.h>
 #include "Fit/LogLikelihoodFCN.h"
 #include "Fit/BinData.h"
 #include "Fit/UnBinData.h"
@@ -131,6 +132,8 @@ class ReadHallCData {
    TH2F *h2_encal_cer, *h2_aero_hgcer_npe;
 
    // for tree in  
+   double H_tr_n                     ;
+   double P_tr_n                     ;
    double H_gtr_xptar                ;
    double H_gtr_yptar                ;
    double P_gtr_xptar                ;
@@ -1595,6 +1598,9 @@ class ReadHallCData {
    TBranch        *b_P_kin_primary_scat_ang_rad;   //!
    TBranch        *b_P_kin_primary_th_q;   //!
    TBranch        *b_P_kin_primary_x_bj;   //!
+
+   TBranch        *b_P_tr_n;   //!
+   TBranch        *b_H_tr_n;   //!
 
 
 

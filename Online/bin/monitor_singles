@@ -5,10 +5,9 @@ ONLINE_DIR=$(dirname $(readlink -f $0))/..
 cd $ONLINE_DIR
 
 ## setup the enviroment
-source $ONLINE_DIR/scripts/setup_env.sh
-module use $HOME/vcs2019/local/etc/modulefiles
-module load hallac_container
-
+source scripts/setup_env.sh
+module use /home/cdaq/vcs2019/local/etc/modulefiles
+module load hallac_container/1.0.0
 
 function print_the_help {
   echo "USAGE:    monitor_singles [-r run_number] [-n nevents]"
@@ -97,8 +96,8 @@ done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
 if [ "$daq_mode" != "shms" ]; then
-root -b -q "scripts/good_hms_counter.cxx+(${run_number},${num_events},\"${daq_mode}\")"
+/home/cdaq/vcs2019/local/opt/hallac_container_1.0.0/bin/root -b -q "scripts/good_hms_counter.cxx+(${run_number},${num_events},\"${daq_mode}\")"
 fi
 if [ "$daq_mode" != "hms" ]; then
-root -b -q "scripts/good_shms_counter.cxx+(${run_number},${num_events},\"${daq_mode}\")"
+/home/cdaq/vcs2019/local/opt/hallac_container_1.0.0/bin/root -b -q "scripts/good_shms_counter.cxx+(${run_number},${num_events},\"${daq_mode}\")"
 fi

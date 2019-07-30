@@ -20,21 +20,21 @@
 8.0
 
 * SHMS dp lower cut (negative)
--10.0
+-7.0
 
 * SHMS dp upper cut (positive)
-20.0
+7.0
 
 * Angular cuts:
 
 * HMS theta upper cut
-0.08
+0.04
 
 * HMS phi upper cut
-0.045
+0.04
 
 * SHMS theta upper cut
-0.06
+0.04
 
 * SHMS phi upper cut
 0.04
@@ -49,7 +49,10 @@
 20
 
 * time delay (cut at ROC2) ! the most important cut to be set for analysis !!!
-39
+* 38.55 first runs replayed IIa ... have this delay. next have 39. to check
+* 39.0 kin Ia
+* 38.85 kin Ib
+38.85
 
 * Trigger time lower cut (+/- delay, negative)
 -100000
@@ -80,10 +83,10 @@
 
 
 * beta max HMS (if no cut set negative / can be above 1 for resolution)
-1.0
+0.9
 
 * beta min SHMS (if no cut set negative)
-0.7
+0.3
 
 
 * beta max SHMS (if no cut set negative / can be above 1 for resolution)

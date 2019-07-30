@@ -20,8 +20,13 @@ set type=$3
 set target=$4
 set dir=`pwd`
 
+${dir}/Online/bin/monitor_singles -r ${run} -n ${ev}
+
 source setup.csh
 ${dir}/Ana/HallCana "${type}" "ana" "${target}" "${run}" -f "${dir}/ROOTfiles/coin_replay_production_${run}_${ev}.root"
+
+echo "Updating VCS status"
+${dir}/Online/bin/update_vcs_status
 
 echo "\n* more lumi_${run}.dat: [runID, lumi HMS (nb), lumi SHMS (nb), time HMS, time SHMS, current HMS, current SHMS]"
 more ${dir}/Ana/files/lumi_${run}.dat
