@@ -2,7 +2,7 @@
 
 """
 Control script to manage background processes such as
-runinfod and related epics IOC.
+runinfod and related epics IOC, and auto-replay.
 
 Author: Sylvester Joosten <sjjooste@jlab.org>
 
@@ -23,6 +23,7 @@ TMUX_SESSION_NAME = 'background'
 EPICS_DIR = '/u/group/c-csv/whit/software/epics/apps/hallc_epics_run_info/iocBoot/ioctest1'
 EPICS_CMD = './st.cmd'
 RUNINFOD_CMD = 'bash Online/scripts/launch_runinfod'
+AUTOREPLAY_CMD = 'python Online/scripts/start_auto_replay.py'
 
 class ProcessAlreadyRunningError(Exception):
     pass
@@ -70,6 +71,13 @@ def start():
             attach=False,
             window_shell=RUNINFOD_CMD)
     print("Background processess started.")
+    ## Start auto replay
+    print("Starting auto-replay...")
+    replay_win = session.new_window(
+            window_name="replay_manager",
+            start_directory=_replay_dir(),
+            attach=False,
+            window_shell=AUTOREPLAY_CMD)
 
 def stop(restart=False):
     """Stop the background processes.

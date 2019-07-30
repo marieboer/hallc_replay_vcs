@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## get the online working directory 
+ONLINE_DIR=$(dirname $(readlink -f $0))/..
+cd $ONLINE_DIR
+
+## setup the enviroment
+source $ONLINE_DIR/scripts/setup_env.sh
+module use $HOME/vcs2019/local/etc/modulefiles
+module load hallac_container
+
+root -l -b -q scripts/update_vcs_status.cxx

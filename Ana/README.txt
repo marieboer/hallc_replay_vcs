@@ -18,6 +18,8 @@ Steps before running this code:
 - a root file of reduced data with 4-vectors in the "files" directory: files/HallCData_(index).root,
 - 3 text files timing_(index).dat, missmass2_(index).dat, lumi_(index).dat containing information to build database in the "files" directory.
 
+> you can find all these files in Results/ and sometimes older files moved to Results1 (on /net)
+
 ---------------------------------------------------------
 
 - if first time running the code over one set of data, call the option "ana" and check all monitoring plots

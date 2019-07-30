@@ -1,4 +1,7 @@
 {
+  "2021": {
+    "comment": "lumi scan 5uA coincidence only"
+  }, 
   "8585": {
     "comment": "Using this as main test run"
   }, 
@@ -23,10 +26,112 @@
   "8850": {
     "comment": "junk"
   }, 
+  "8865": {
+    "comment": "wrong hms angle -.5 deg (all serie up to 8880)"
+  }, 
   "8866": {
     "comment": "junk test prescale"
   }, 
+  "8880": {
+    "comment": "after rotating to correct angle"
+  }, 
   "8897": {
     "comment": "DC tripped run ended early"
+  }, 
+  "8905": {
+    "comment": "junk (cosmics)"
+  }, 
+  "8906": {
+    "comment": "junk (cosmics)"
+  }, 
+  "8913": {
+    "comment": "junk"
+  }, 
+  "8978": {
+    "comment": "junk"
+  }, 
+  "9017": {
+    "comment": "lumi scan (junk)"
+  }, 
+  "9018": {
+    "comment": "lumi scan 5uA singles and coincidence trigger"
+  }, 
+  "9019": {
+    "comment": "lumi scan (junk)"
+  }, 
+  "9020": {
+    "comment": "lumi scan 5uA singles only"
+  }, 
+  "9021": {
+    "comment": "lumi scan 5uA coincidence only"
+  }, 
+  "9022": {
+    "comment": "lumi scan 10uA coincidence only"
+  }, 
+  "9023": {
+    "comment": "lumi scan 10uA singles only"
+  }, 
+  "9024": {
+    "comment": "lumi scan 15uA singles only"
+  }, 
+  "9025": {
+    "comment": "lumi scan 15uA coincidence only"
+  }, 
+  "9043": {
+    "comment": "good"
+  }, 
+  "9044": {
+    "comment": "good"
+  }, 
+  "9045": {
+    "comment": "good"
+  }, 
+  "9046": {
+    "comment": "junk"
+  }, 
+  "9047": {
+    "comment": "very short test config"
+  }, 
+  "9048": {
+    "comment": "very short test config"
+  }, 
+  "9049": {
+    "comment": "junk efficiency drop down"
+  }, 
+  "9050": {
+    "comment": "good but very short"
+  }, 
+  "9051": {
+    "comment": "good but very short"
+  }, 
+  "9052": {
+    "comment": "very good"
+  }, 
+  "9053": {
+    "comment": "excellent"
+  }, 
+  "9054": {
+    "comment": "partial was not done. awaiting full replay"
+  }, 
+  "9055": {
+    "comment": "very excellent"
+  }, 
+  "9067": {
+    "comment": "at 23 uA, lost efficiency"
+  }, 
+  "9068": {
+    "comment": "at 23 uA, lost efficiency"
+  }, 
+  "9069": {
+    "comment": "at 23 uA, lost efficiency"
+  }, 
+  "9118": {
+    "comment": "junk"
+  }, 
+  "9165": {
+    "comment": "the last KinIb run"
+  }, 
+  "9168": {
+    "comment": "#9167 EB2 disconnected, kcoda and restart coda, no data saved"
   }
 }

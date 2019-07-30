@@ -36,12 +36,12 @@
 * coincidence time distributions
 
 * rel_time: min, max, N bins
--30
-30 
+-20
+20 
 600
 * abs_time: min, max, N bins
-0
-85
+20
+60
 600
 * trig_time: min, max, N bins
 -500
